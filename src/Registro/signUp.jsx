@@ -1,6 +1,12 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import { useForm } from '../hooks/useForm';
 import { Link } from "react-router-dom";
+import {
+    createUserWithEmailAndPassword,
+    onAuthStateChanged,
+  } from "firebase/auth";
+import { auth } from "../firebase-config";
+import { useNavigate } from "react-router-dom";
 
 export const SignUp = ()=>{
     const [formValues, handleInputChanges] =useForm({
@@ -10,7 +16,36 @@ export const SignUp = ()=>{
         clave: ""
     })
 
+    const [registerEmail, setRegisterEmail] =useState("");
+    const [registerPassword, setRegisterPassword] = useState("");
+
+    const [user, setUser] = useState({});
+    const navegacion = useNavigate()
+ 
+
+    const register = async (e) => {
+        e.preventDefault()
+        try {
+            const user = await createUserWithEmailAndPassword(
+              auth,
+              registerEmail,
+              registerPassword
+            );
+
+            console.log(user);
+            navegacion('/Login')
+        } catch (error) {
+            console.log(error.message);
+        }
+    };
+
     const {nombre, apellido, usuario, clave} = formValues;
+
+    useEffect(()=>{
+        onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+        });
+    },[user]);
 
     return (
         <section class = "text-center">
@@ -20,7 +55,7 @@ export const SignUp = ()=>{
                     <div class="row d-flex justify-content-center ">
                         <div class="col-lg-8">
                             <h2 class="fw-bold mb-5">Registrate ahora</h2>
-                            <form>
+                            <form onSubmit={(e)=>{register(e)}}>
 
                                     <div class="row">
                                         <div class="form-outline mb-4">
@@ -56,9 +91,11 @@ export const SignUp = ()=>{
                                             name='usuario'
                                             autoComplete='off'
                                             placeholder='Usuario'
-                                            value={usuario}
-                                            onChange={handleInputChanges}
-                                            required
+                                            value={registerEmail}
+                                            onChange={(event) => {
+                                                setRegisterEmail(event.target.value);
+                                              }}
+                                            //required
                                         /> 
                                     </div>
                                     <div class="form-outline mb-4">
@@ -68,9 +105,11 @@ export const SignUp = ()=>{
                                             name='clave'
                                             autoComplete='off'
                                             placeholder='Contraseña'
-                                            value={clave}
-                                            onChange={handleInputChanges}
-                                            required
+                                            value={registerPassword}
+                                            onChange={(event) => {
+                                                setRegisterPassword(event.target.value);
+                                              }}
+                                            //required
                                         /> 
                                     </div>
                                     <div class="mb-3 d-flex justify-content-center ">
