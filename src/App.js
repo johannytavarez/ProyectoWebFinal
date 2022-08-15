@@ -4,11 +4,11 @@ import React from 'react';
 function App() {
   return (
     <div className="App">
-      <nav class="navbar navbar-expand-lg bg-light">
+      <nav class="navbar navbar-expand-lg bg-info bg-opacity-50">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Muro Interactivo</a>
-        </div>
-        <div class="collapse navbar-collapse" id="navbarScroll">
+
+          <div class="collapse navbar-collapse" id="navbarScroll">
           <ul class="navbar-nav me-auto mb-2 my-lg-0 navbar-nav-scroll">
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="/Registro">Sign up</a>
@@ -18,12 +18,13 @@ function App() {
             </li>
           </ul>
         </div>
+        </div>
       </nav>
 
         {/* Modal */}
-      <div class="d-flex justify-content-center">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-            Launch static backdrop modal
+      <div class="d-flex justify-content-end my-5 me-3 d-grid gap-2">
+        <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              ¿Qué estas pensando?
         </button>
       </div>
         
