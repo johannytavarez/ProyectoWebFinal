@@ -15,6 +15,7 @@ Johanny Tavarez 2020-10554
 ![muro](public/imagenes/muro.png)
 
 #Descripcion del proyecto
+
 Este proyecto permite realizar post en un muro interactivo, cuando se pulsa el boton de "¿Qué estas pensando", abre uuna ventana modal donde se ve el email del usuario logueado, si no hay nadie logueado la pagina se autodirige al login.
 
 Una persona aunque no este logueada puede ver todos los post realizados. Estos post se almacenan en forma de carta y estan distribuidos en columnas, su tamaño se adapta conforme al texto publicado. 
