@@ -1,4 +1,4 @@
-#Proyecto Final
+Proyecto Final
 
 Muro Interactivo
 Haga un sistema WEB que permita a los visitantes las siguientes funcionalidades:
@@ -14,7 +14,7 @@ Johanny Tavarez 2020-10554
 ![modal](public/imagenes/modal.png)
 ![muro](public/imagenes/muro.png)
 
-#Descripcion del proyecto
+Descripcion del proyecto
 
 Este proyecto permite realizar post en un muro interactivo, cuando se pulsa el boton de "¿Qué estas pensando", abre uuna ventana modal donde se ve el email del usuario logueado, si no hay nadie logueado la pagina se autodirige al login.
 
